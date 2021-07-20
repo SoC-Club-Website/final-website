@@ -15,7 +15,7 @@ def home(request):
     context={
         'posts':Post.objects.all()
     }
-    return render(request,'blog/home.html',context)
+    return render(request,'blog/blog-home.html',context)
 
 
 
@@ -131,4 +131,4 @@ def about(request):
 
 def BlogHome(request):
     user=request.user
-    return render(request,'home.html',{'user':user})
+    return render(request,'blog/index.html',{'user':user})
