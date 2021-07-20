@@ -2,6 +2,7 @@ from .models import Comment
 from django import forms
 
 class CommentForm(forms.ModelForm):
+    comment = forms.CharField()
     class Meta:
         model = Comment
-        fields = ('name', 'email', 'body')
+        fields = ['comment']

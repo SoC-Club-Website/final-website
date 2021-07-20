@@ -2,6 +2,8 @@ from .models import Post
 
 from django.shortcuts import redirect, render,get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
+from django.views.generic.edit import FormMixin
+from .forms import CommentForm
 
 from django.contrib.auth.models import User
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
@@ -37,14 +39,43 @@ class UserPostListView(ListView):
 
 
 
-class PostDetailView(DetailView):
+class PostDetailView(FormMixin, DetailView):
     model = Post
+    form_class= CommentForm
+    
+    def get_success_url(self):
+        return reverse("post-detail", kwargs={'pk': self.object.id})
+
+    def post(self, request, *args, **kwargs):
+        
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+         return self.form_invalid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = CommentForm(initial={
+            'post': self.object
+        })
+        return context
+    
+    def form_valid(self,form):
+        form.instance.author= self.request.user
+        instance = form.save(commit=False)
+        instance.created_by = self.request.user
+        instance.post = self.object
+        instance.save()
+        return super(PostDetailView, self).form_valid(form)
+
 
     
 
 class PostCreateView(LoginRequiredMixin,CreateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'content', 'image']
     def form_valid(self,form):
         form.instance.author= self.request.user
         return super().form_valid(form)
@@ -52,7 +83,7 @@ class PostCreateView(LoginRequiredMixin,CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'content', 'image']
 
     def form_valid(self, form):
         form.instance.author = self.request.user

@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
 
 <article class="media content-section">
@@ -15,6 +16,9 @@
             {% endif %}
         </div>
         <h2 class="article-title" >{{object.title }}</h2>
+        {% if object.image %}    
+        <img class="post-img"  src="{{object.image.url}}">
+        {%endif%}
         <p class="article-content">{{ object.content }}</p>
         {% if user.is_authenticated %}
        <ul style="list-style-type: none; display:inline-flex; margin-left:-7%;  ">      
@@ -37,13 +41,36 @@
         {% endif %}
 </ul>
 
-  <small style="margin-left:95%">{{object.total_comments}} comments</small>
-    </div>
     <br><br>
     <a href="{% url 'blog-home' %}" class="btn btn-secondary mb-5">Back</a>
-    <br><br>
-    <hr><br>
-    <hr><hr>
+    
+    <h5>Comments</h5><br>
+    <br>
+    <div>
+        {%for comment in post.comment_set.all %}
+        <img class="rounded-circle comment-img" src="{{comment.author.profile.image.url}}">
+        <b>{{comment.author}} </b><small> {{comment.date_posted|timesince}} ago</small>
+        <p>{{comment.comment}}</p><hr>
+        {%endfor%}
+    </div>
+    <br>
+    <div class="content-section">
+        {%if user.is_authenticated%}
+        <form method="POST">
+            {%csrf_token%}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4"></legend>
+                {{form|crispy}}
+            </fieldset>
+            <div class="form-group">
+                 <button class="btn btn-outline-info" type="submit">Post</button>
+            </div>
+        </form>
+        {%else %}
+        Log In to comment
+     </div>
+     {%endif%}
+     </div>
     
 </article>
 
