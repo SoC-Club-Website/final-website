@@ -19,7 +19,7 @@
         <p class="article-content">{{ post.content }}</p>
         
       
-      <!--<small style="float:inline-end"><a href="{% url 'post-detail' post.id %}">{{post.total_comments}} Comments</a></small>-->
+      <small><a href="{% url 'post-detail' post.id %}" style="color:rgb(192, 16, 51)">{{post.total_comment}} Comments</a></small>
      
     </div>
    <div>
@@ -41,6 +41,7 @@
       <button class="btn btn-danger">{{post.total_dislikes}}<i class="fa fa-angle-down" aria-hidden="true"></i></button>
       {% endif %}
    </div>
+   
 </article>
 {% endfor %}
 {% if is_paginated %}

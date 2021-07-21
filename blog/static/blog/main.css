@@ -114,3 +114,32 @@ a.article-title:hover {
   max-height:  100vh;
   max-width:100%;
 }
+
+/* .accordion__button{
+  display:block;
+  width:100%;
+  padding:15px;
+  border:none;
+  outline:none;
+  cursor:pointer;
+  background:rgb(165, 0, 0);
+  color:white;
+  text-align:left;
+  /* transition: background 0.2s ; */
+
+/* .accordion__button::after{
+  
+  float:right;
+  translate:scale(1.5);
+}
+.accordion__button--active{
+  background:black;
+  
+}
+.accordion__content{
+  
+  overflow: hidden;
+  max-height:0;
+  transition: max-height 0.2s;
+
+} */ 
