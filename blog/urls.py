@@ -14,6 +14,6 @@ urlpatterns = [
     path('about/', views.about, name='blog-about'),
     path('like/<int:pk>/',LikeView,name='like_post'),
     path('Dislike/<int:pk>/', DisLikeView, name='Dislike_post'),
-
+    
 ]
  

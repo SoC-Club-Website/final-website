@@ -1,0 +1,86 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+
+
+
+.common{
+   margin: 10px;
+}
+.common p{
+   padding: 5px;
+   font-family: 'Nanum Myeongjo', serif;
+   font-weight: bold;
+}
+
+#head {
+   /* border: 2px solid red; */
+   text-align: center;
+}
+
+#head h1{
+   font-family: 'Playfair Display', serif;
+   font-weight: bold;
+}
+#para1{
+   /* border: 2px solid black; */
+   text-align: center;
+   margin-top: 20px;
+}
+#para1 p{
+   color: rgb(6, 6, 90);
+   font-size: 20px;
+}
+.cp p{
+   font-size: 17px;
+}
+/* #para2{
+   border: 2px solid blue;
+}
+#para3{
+   border: 2px solid blueviolet;
+}
+#para4{
+   border: 2px solid yellow;
+}
+#para5{
+   border: 2px solid green;
+} */
+@media screen and (min-width: 1000px){
+   footer{
+      margin-top: 170px;
+   }
+}
+
+
+
+
+
+
+
+
+
+/* h1 {
+    color: red;
+   }
+   
+   h4{
+      color : blue
+   }
+   p{
+    /* color: whitesmoke; */
+   /*}
+   
+   h6{
+    color: yellow
+   }
+   
+   a{
+    color: pink;
+   }
+   body{
+    background-color: black;
+    border: 2px solid blue;
+    text-align: center;
+    
+   } */

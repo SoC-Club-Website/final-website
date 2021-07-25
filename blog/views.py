@@ -1,13 +1,14 @@
+from django.http.response import HttpResponse
 from .models import Post
 
 from django.shortcuts import redirect, render,get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from django.views.generic.edit import FormMixin
 from .forms import CommentForm
-
+from django.db.models import Count
 from django.contrib.auth.models import User
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse
 
 
@@ -132,3 +133,6 @@ def about(request):
 def BlogHome(request):
     user=request.user
     return render(request,'blog/index.html',{'user':user})
+
+
+  

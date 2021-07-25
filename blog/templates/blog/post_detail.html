@@ -49,7 +49,14 @@
     <br><br>
     
     <hr>
-    <small>{{object.total_comment}} Comments</small><br>
+    {% if object.total_comment <= 1 %}
+     <small><a href="{% url 'post-detail' post.id %}"
+            style="color:rgb(192, 16, 51)">{{object.total_comment}}
+            Comment</a></small>
+        {% else %}
+        <small><a href="{% url 'post-detail' post.id %}" style="color:rgb(192, 16, 51)">{{object.total_comment}}
+                Comments</a></small>
+        {% endif %}
     <br>
     <div>
         {%for comment in post.comment_set.all %}
