@@ -5,7 +5,7 @@ Setup: How to run it locally
 
 The first thing to do is to clone the repository:
 
-$ git clone https://github.com/SoC-Club-Website/final-website
+$ git clone https://github.com/SoC-Club-Website/final-website.git
 
 $ cd final-website
 
