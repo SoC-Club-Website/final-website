@@ -1,5 +1,7 @@
+the hosted website is at https://anime-club-iitb.herokuapp.com/
 
-Setup
+
+Setup: How to run it locally
 
 The first thing to do is to clone the repository:
 
